@@ -57,3 +57,9 @@ class Wallet:
       self.keys = imported_identity
     self.nonce = 0
     
+  def sign(toSign):
+    return self.keys._private_key.sign(toSign)
+  
+  def transact(transaction, chain):
+    transaction.signedMessage = self.sign(transaction)
+    
